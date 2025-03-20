@@ -2,8 +2,6 @@
 
 NUM=$1
 
-echo "Please enter the number :$1"
-
 if[ $NUM -gt 100]
 then
     echo "Given number is greater than 100"
