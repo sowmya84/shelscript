@@ -8,3 +8,21 @@ then
 fi    
 
 dnf install mysql -y
+
+if [ $? -ne 0 ]
+then 
+    echo "Installing MYSQL .... Failure"
+    exit 1
+else
+    echo "Installing MYSQL .... Success"
+fi
+
+dnf install git -y
+
+if [ $? -ne 0 ]
+then 
+    echo "Installing GIT .... Failure"
+    exit 1
+else
+    echo "Installing GIT .... Success"
+fi
