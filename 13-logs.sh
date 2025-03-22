@@ -4,6 +4,7 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
+N="\e[0m"
 
 LOGS_FOLDER="/var/log/shellscript-logs/13-logs.sh.log"
 LOGS_FILE=$(echo $0 | cut -d "." -f1 )
@@ -13,14 +14,14 @@ LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE-$TIMESTAMP.log"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 ... $R FAILURE"
+        echo -e "$2 ... $R FAILURE $N"
         exit 1
     else
-        echo -e "$2 ... $G SUCCESS"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
-echo "Script started executing at: $TIMESTAMP"
+echo "Script started executing at: $TIMESTAMP" &>>LOG_FILE_NAME
 
 if [ $USERID -ne 0 ]
 then
@@ -35,7 +36,7 @@ then # not installed
     dnf install mysql -y &>>LOG_FILE_NAME
     VALIDATE $? "Installing MySQL"
 else
-    echo -e "MySQL is already ... $Y INSTALLED"
+    echo -e "MySQL is already ... $Y INSTALLED $N"
 fi
 
 
@@ -46,5 +47,5 @@ then
     dnf install git -y &>>LOG_FILE_NAME
     VALIDATE $? "Installing Git"
 else
-    echo -e "Git is already ... $Y INSTALLED"
+    echo -e "Git is already ... $Y INSTALLED $N"
 fi
