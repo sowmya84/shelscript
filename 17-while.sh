@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whilee read -r line
+while read -r line
 do 
     echo $line
 done < 16-delete-old-logs.sh
