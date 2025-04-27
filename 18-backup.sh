@@ -48,10 +48,9 @@ echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
  
  echo "Files to be deleted: $FILES"
 
-# while read -r file
-# do
-    
-#      echo "Deleting file: $file"
-#     rm -rf $file
-# done <<< $FILES_TO_DELETE
-
+if [ -n $FILES ]
+then
+    echo "FILES are: $FILES"
+else
+    echo "No files found older than $DAYS"
+fi    
